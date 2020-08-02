@@ -1,2 +1,83 @@
-# CarGame
+# CarController
 Tutorial unity
+
+    Transform player;
+    GameManager2 gameManager;
+    bool top = false;
+    bool bottom = false;
+    bool east = false;
+    bool west = false;
+    const float speed = 0.02f;
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        player = GameObject.Find("Player").transform;
+        if (Random.Range(0, 4) == 0)
+        {//top
+            top = true;
+            int px = Random.Range(-6, 7);
+            transform.position = new Vector2(px, 5.6f);
+            transform.Rotate(0, 0, 180);
+        }
+        else if (Random.Range(0, 4) == 1)
+        {//bottom
+            bottom = true;
+            int px = Random.Range(-6, 7);
+            transform.position = new Vector2(px, -5.6f);
+            transform.Rotate(0, 0, 0);
+        }
+        else if (Random.Range(0, 4) == 2)
+        {//east
+            east = true;
+            float px = Random.Range(-4.2f, 4.2f);
+            transform.position = new Vector2(10, px);
+            transform.Rotate(0, 0, 90);
+        }
+        else if (Random.Range(0, 4) == 3)
+        {//west
+            west = true;
+            float px = Random.Range(-4.2f, 4.2f);
+            transform.position = new Vector2(-10, px);
+            transform.Rotate(0, 0, 270);
+        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(top == true)
+        {
+            transform.Translate(0, 0.02f, 0);
+        }
+        else if (bottom == true)
+        {
+            transform.Translate(0, 0.02f, 0);
+        }
+        else if (east == true)
+        {
+            transform.Translate(0, 0.02f, 0);
+        }
+        else if (west == true)
+        {
+            transform.Translate(0, 0.02f, 0);
+        }
+        Vector2 p1 = transform.position;
+        Vector2 p2 = player.transform.position;
+        Vector2 dir = p2 - p1;
+        float d = dir.magnitude;
+        float r1 = 0.5f;
+        float r2 = 0.5f;
+
+        if (d <= r1 + r2)
+        {
+            gameManager = GameObject.Find("GameManager").GetComponent<GameManager2>();
+            gameManager.DecreaseHp();
+            Destroy(gameObject);
+        }
+
+        if (transform.position.y < -7f || transform.position.y > 7f || transform.position.x < -13f || transform.position.x > 13f)
+        {
+            Destroy(gameObject);
+        }
+    }
