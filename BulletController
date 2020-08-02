@@ -1,6 +1,9 @@
-# CarController
-Tutorial unity
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
+public class BulletController : MonoBehaviour
+{
     Transform player;
     GameManager2 gameManager;
     bool top = false;
@@ -46,7 +49,7 @@ Tutorial unity
     // Update is called once per frame
     void Update()
     {
-        if(top == true)
+        if (top == true)
         {
             transform.Translate(0, 0.02f, 0);
         }
@@ -81,3 +84,4 @@ Tutorial unity
             Destroy(gameObject);
         }
     }
+}
