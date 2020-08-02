@@ -1,0 +1,26 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BulletGenerater : MonoBehaviour
+{
+    public GameObject top_bullet;
+    public float span = 0.5f;
+    float delta;
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        delta += Time.deltaTime;
+        if (delta >= span)
+        {
+            delta = 0;
+            Instantiate(top_bullet);
+        }
+    }
+}
