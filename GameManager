@@ -1,0 +1,30 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using static System.Threading.Thread;
+
+public class GameManager2 : MonoBehaviour
+{
+    Image hp_gauge;
+    Image gameover;
+    public GameObject player;
+    // Start is called before the first frame update
+    void Start()
+    {
+        hp_gauge = GameObject.Find("HPgauge").GetComponent<Image>();
+        gameover = GameObject.Find("GameOver").GetComponent<Image>();
+    }
+
+    // Update is called once per frame
+    public void DecreaseHp()
+    {
+        hp_gauge.fillAmount -= 0.1f;
+
+        //체력이 0이 될 시 GameOver 이미지 생성
+        if(hp_gauge.fillAmount == 0f)
+        {
+            gameover.fillAmount += 1f;
+        }
+    }
+}
