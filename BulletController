@@ -49,22 +49,7 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (top == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
-        else if (bottom == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
-        else if (east == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
-        else if (west == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
+        transform.Translate(0, 0.02f, 0);
         Vector2 p1 = transform.position;
         Vector2 p2 = player.transform.position;
         Vector2 dir = p2 - p1;
