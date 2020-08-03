@@ -18,28 +18,24 @@ public class BulletController : MonoBehaviour
         player = GameObject.Find("Player").transform;
         if (Random.Range(0, 4) == 0)
         {//top
-            top = true;
             int px = Random.Range(-6, 7);
             transform.position = new Vector2(px, 5.6f);
             transform.Rotate(0, 0, 180);
         }
         else if (Random.Range(0, 4) == 1)
         {//bottom
-            bottom = true;
             int px = Random.Range(-6, 7);
             transform.position = new Vector2(px, -5.6f);
             transform.Rotate(0, 0, 0);
         }
         else if (Random.Range(0, 4) == 2)
         {//east
-            east = true;
             float px = Random.Range(-4.2f, 4.2f);
             transform.position = new Vector2(10, px);
             transform.Rotate(0, 0, 90);
         }
         else if (Random.Range(0, 4) == 3)
         {//west
-            west = true;
             float px = Random.Range(-4.2f, 4.2f);
             transform.position = new Vector2(-10, px);
             transform.Rotate(0, 0, 270);
@@ -49,22 +45,7 @@ public class BulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (top == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
-        else if (bottom == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
-        else if (east == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
-        else if (west == true)
-        {
-            transform.Translate(0, 0.02f, 0);
-        }
+        transform.Translate(0, 0.02f, 0);
         Vector2 p1 = transform.position;
         Vector2 p2 = player.transform.position;
         Vector2 dir = p2 - p1;
